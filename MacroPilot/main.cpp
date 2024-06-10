@@ -3,11 +3,22 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QPushButton>
 
 int main(int argc, char *argv[])
 {
+    qDebug() << "STARTING APPLICATION!";
+    /*
+    APPLICATION OBJECT
+    */
     QApplication a(argc, argv);
 
+
+    /*
+    TRANSLATION
+    */
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {
@@ -17,7 +28,17 @@ int main(int argc, char *argv[])
             break;
         }
     }
+
+
+
+    /*
+    WINDOW OBJECT + WINDOW SPECS
+    */
     MainWindow w;
-    w.show();
-    return a.exec();
+    w.setWindowTitle("MacroPilot");
+    w.setFixedSize(485, 330);  // Width height, pixels
+    w.show();  // Show window
+
+
+    return a.exec();  // Execute application event loop
 }

@@ -17,6 +17,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySequence);
+
+    void on_keySequenceEdit_editingFinished();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+    bool eventFilter(QObject *obj, QEvent *event);
+
 private:
     Ui::MainWindow *ui;
 };
