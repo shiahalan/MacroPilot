@@ -420,9 +420,9 @@
           <widget class="QKeySequenceEdit" name="keySequenceEdit">
            <property name="geometry">
             <rect>
-             <x>180</x>
+             <x>160</x>
              <y>81</y>
-             <width>101</width>
+             <width>141</width>
              <height>31</height>
             </rect>
            </property>
@@ -439,7 +439,7 @@
           <widget class="QLabel" name="label_11">
            <property name="geometry">
             <rect>
-             <x>130</x>
+             <x>120</x>
              <y>85</y>
              <width>49</width>
              <height>21</height>

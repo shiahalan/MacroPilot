@@ -41,12 +41,6 @@ int main(int argc, char *argv[])
     w.setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
     w.show();  // Show window
 
-
-    // QtConcurrent::run([&w]() {
-    //     w.testHotkey(w.getUi()->keySequenceEdit->keySequence(), &w);
-    // });
-
-
     return a.exec();  // Execute application event loop
 }
 

@@ -9,10 +9,10 @@
 #include <QApplication>
 
 
-
 bool autoClickerRunning = false;
 bool autoClickerAntiSpamStart = false;
 bool autoClickerAntiSpamStop = true;
+int hotKeyId = 101;
 QMessageBox *messageBox = nullptr;  // Global message box
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,13 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->keySequenceEdit->setKeySequence(defaultKeySequence);
 
     // RegisterHotKey((HWND)MainWindow::winId(), 99, 0, VK_F9);
-    // RegisterHotKey((HWND)MainWindow::winId(), 100, 0, VK_F8);
-    // RegisterHotKey((HWND)MainWindow::winId(), 101, 0, VK_F7);
-
-    registerHotKey(100, 0, VK_F8);
-    registerHotKey(101, 0, VK_F7);
-
-    // qApp->installEventFilter(this);
+    registerHotKey(101, 0, VK_F9);
 
 }
 
@@ -39,11 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-Ui::MainWindow *MainWindow::getUi() const {
-    return ui;
 }
 
 
@@ -57,16 +46,127 @@ KEY SEQUENCE EDITOR FOR AUTOCLICKER HOTKEY
 void MainWindow::on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySequence)
 {
     ui->keySequenceEdit->setKeySequence(keySequence);
-    qDebug() << "Hotkey changed to: " << keySequence;
-}
+    qDebug() << "Hotkey being changed to: " << keySequence;
+    unregisterHotKey(hotKeyId);
 
+    int keyCode = keySequence[0];
+    int modifiers = 0;
+
+    if (!keySequence.isEmpty()) {
+
+        if (keySequence.toString(QKeySequence::NativeText).contains("Ctrl") ||
+            keySequence.toString(QKeySequence::NativeText).contains("Alt") ||
+            keySequence.toString(QKeySequence::NativeText).contains("Shift") ||
+            keySequence.toString(QKeySequence::NativeText).contains("Meta")) {
+
+            qDebug() << "Has a modifier!";
+
+            if (keySequence.toString(QKeySequence::NativeText).contains("F1") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F2") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F3") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F4") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F5") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F6") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F7") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F8") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F9") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F10") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F11") ||
+                keySequence.toString(QKeySequence::NativeText).contains("F12")) {
+
+                if (keySequence.toString(QKeySequence::NativeText).contains("F1"))
+                    keyCode = Qt::Key_F1;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F2"))
+                    keyCode = Qt::Key_F2;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F3"))
+                    keyCode = Qt::Key_F3;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F4"))
+                    keyCode = Qt::Key_F4;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F5"))
+                    keyCode = Qt::Key_F5;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F6"))
+                    keyCode = Qt::Key_F6;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F7"))
+                    keyCode = Qt::Key_F7;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F8"))
+                    keyCode = Qt::Key_F8;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F9"))
+                    keyCode = Qt::Key_F9;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F10"))
+                    keyCode = Qt::Key_F10;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F11"))
+                    keyCode = Qt::Key_F11;
+                if (keySequence.toString(QKeySequence::NativeText).contains("F12"))
+                    keyCode = Qt::Key_F12;
+            } else keyCode = keySequence.toString(QKeySequence::NativeText).toStdString().back();
+
+            if (keySequence.toString(QKeySequence::NativeText).contains("Ctrl"))
+                modifiers |= MOD_CONTROL;
+            if (keySequence.toString(QKeySequence::NativeText).contains("Alt"))
+                modifiers |= MOD_ALT;
+            if (keySequence.toString(QKeySequence::NativeText).contains("Shift"))
+                modifiers |= MOD_SHIFT;
+            if (keySequence.toString(QKeySequence::NativeText).contains("Meta"))
+                modifiers |= MOD_WIN;
+        }
+
+        // Check for special cases
+        switch(keyCode) {
+
+        case Qt::Key_F1:
+            keyCode = VK_F1;
+            break;
+        case Qt::Key_F2:
+            keyCode = VK_F2;
+            break;
+        case Qt::Key_F3:
+            keyCode = VK_F3;
+            break;
+        case Qt::Key_F4:
+            keyCode = VK_F4;
+            break;
+        case Qt::Key_F5:
+            keyCode = VK_F5;
+            break;
+        case Qt::Key_F6:
+            keyCode = VK_F6;
+            break;
+        case Qt::Key_F7:
+            keyCode = VK_F7;
+            break;
+        case Qt::Key_F8:
+            keyCode = VK_F8;
+            break;
+        case Qt::Key_F9:
+            keyCode = VK_F9;
+            break;
+        case Qt::Key_F10:
+            keyCode = VK_F10;
+            break;
+        case Qt::Key_F11:
+            keyCode = VK_F11;
+            break;
+        case Qt::Key_F12:
+            keyCode = VK_F12;
+            break;
+        default:
+            qDebug() << "Not a registered special key case";
+            break;
+        }
+
+        if (registerHotKey(hotKeyId, modifiers, keyCode)) {
+            qDebug() << "Hotkey has been changed to: " << keySequence;
+        } else {
+            qDebug() << "Failed to change hotkey";
+        }
+    }
+}
 
 void MainWindow::on_keySequenceEdit_editingFinished()
 {
     qDebug() << "Hotkey change successful!";
 
 }
-
 
 
 /*
@@ -82,7 +182,6 @@ void autoClickerRun() {
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
         Sleep(interval);
     }
-
 }
 
 
@@ -120,7 +219,6 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
-
 void MainWindow::on_pushButton_2_clicked()
 {
     qDebug() << "Stop autoclicker button pressed";
@@ -144,34 +242,10 @@ void MainWindow::on_pushButton_2_clicked()
     }
 }
 
+
 /*
 AUTOCLICKER HOTKEY START AND STOP
 */
-
-bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-    if (event->type() == QEvent::KeyPress) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-
-        QKeySequence userInput = ui->keySequenceEdit->keySequence();
-
-        if (userInput == QKeySequence(keyEvent->key())) {
-
-            if (!autoClickerRunning) {
-                on_pushButton_clicked();
-
-            } else {
-                on_pushButton_2_clicked();
-            }
-
-            return true; // Use the event, do not give to another
-        }
-    }
-
-
-    return QMainWindow::eventFilter(obj, event);  // Return the event, other event handler maybe can take it
-}
-
 
 bool MainWindow::registerHotKey(int id, int modifiers, int key) {
     if (!RegisterHotKey((HWND)MainWindow::winId(), id, modifiers, key)) {
@@ -182,96 +256,38 @@ bool MainWindow::registerHotKey(int id, int modifiers, int key) {
     return true;
 }
 
+bool MainWindow::unregisterHotKey(int id) {
+    if (!UnregisterHotKey((HWND)MainWindow::winId(), id)) {
+        qDebug() << "Failed to unregister hotkey with ID:" << id;
+        return false;
+    }
+    qDebug() << "Unregistered hotkey with ID:" << id;
+    return true;
+}
+
+
 
 bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr *result){
     Q_UNUSED(eventType);
     Q_UNUSED(result);
 
-    // MSG *msg = reinterpret_cast<MSG*>(message);
-    qDebug() << "Received message:"; // << msg->message << "wParam:" << msg->wParam;
-
-    // Q_UNUSED(eventType)
-    // Q_UNUSED(result)
-
-    // MSG *msg = reinterpret_cast<MSG*>(message);
-    // if (msg->message == WM_HOTKEY){
-    //     qDebug() << "Something was pressed";
-    //     if (msg->wParam == 99) {
-    //         qDebug() << " I WAS PRESSED";
-    //         return true;
-    //     }
-    //     // if (msg->wParam == 100){ // Hotkey ID for F8
-    //     //     if (!autoClickerRunning) {
-    //     //         on_pushButton_clicked();
-    //     //     } else {
-    //     //         on_pushButton_2_clicked();
-    //     //     }
-    //     //     return true; // Indicate that the message has been handled
-    //     // }
-    //     // if (msg->wParam == 101){ // Hotkey ID for F7
-    //     //     if (!autoClickerRunning) {
-    //     //         on_pushButton_clicked();
-    //     //     } else {
-    //     //         on_pushButton_2_clicked();
-    //     //     }
-    //     //     return true; // Indicate that the message has been handled
-    //     // }
-    // }
+    MSG *msg = reinterpret_cast<MSG*>(message);
+    // qDebug() << "Native Event Message Received: " << msg->message << "wParam:" << msg->wParam;
+    // qDebug() << ui->keySequenceEdit->keySequence();
+    if (msg->message == WM_HOTKEY){
+        qDebug() << "Hotkey was pressed";
+        if (msg->wParam == 100){ // Hotkey ID for F9
+            if (!autoClickerRunning) {
+                on_pushButton_clicked();
+            } else {
+                on_pushButton_2_clicked();
+            }
+            return true; // Indicate that the message has been handled
+        }
+    }
 
     return false;
 }
-
-
-int mapQtKeyToVirtualKey(Qt::Key key) {
-    switch (key) {
-    case Qt::Key_F9: return VK_F9;
-    default: return -1; // Invalid key
-    }
-}
-
-bool tester = false;
-void MainWindow::testHotkey(const QKeySequence &sequence, MainWindow *mainWindow) {
-    QList<int> virtualKeyCodes;
-    for (int i = 0; i < sequence.count(); ++i) {
-        int qtKeyCode = sequence[i];
-        int virtualKeyCode = mapQtKeyToVirtualKey(static_cast<Qt::Key>(qtKeyCode));
-        if (virtualKeyCode != -1) {
-            virtualKeyCodes.append(virtualKeyCode);
-        }
-    }
-
-    while (true) {
-        bool allPressed = true;
-        foreach (int virtualKeyCode, virtualKeyCodes) {
-            if (!(GetAsyncKeyState(virtualKeyCode) & 0x8000)) {
-                allPressed = false;
-                break;
-            }
-        }
-        if (allPressed) {
-            if (!autoClickerRunning) {
-                mainWindow->on_pushButton_clicked();
-
-            } else {
-                mainWindow->on_pushButton_2_clicked();
-            }
-        }
-
-        // if (GetAsyncKeyState('X') {
-        //     qDebug() << "Pressed";
-        //     tester = true;
-        // }
-        // else if (GetAsyncKeyState('Z')) {
-        //     qDebug() << "Stopped";
-        //     tester = false;
-        // }
-        // if (tester) {
-        //     qDebug() << "Clicking";
-        //     Sleep(500);
-        // }
-    }
-}
-
 
 /*
 AUTOCLICKER SECION END ===============================================================

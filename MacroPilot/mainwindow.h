@@ -21,10 +21,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    static void testHotkey(const QKeySequence &sequence, MainWindow *mainWindow);
-
-    Ui::MainWindow *getUi() const;
-
 
 protected:
     bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
@@ -39,9 +35,9 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    bool eventFilter(QObject *obj, QEvent *event);
-
     bool registerHotKey(int id, int modifiers, int key);
+
+    bool unregisterHotKey(int id);
 
 
 private:
