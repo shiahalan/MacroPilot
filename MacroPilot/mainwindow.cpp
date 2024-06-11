@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     QKeySequence defaultKeySequence("F9");
     ui->keySequenceEdit->setKeySequence(defaultKeySequence);
 
-    // RegisterHotKey((HWND)MainWindow::winId(), 99, 0, VK_F9);
+    // RegisterHotKey((HWND)MainWindow::winId(), 101, 0, VK_F9);
     registerHotKey(101, 0, VK_F9);
 
 }
@@ -276,7 +276,7 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr
     // qDebug() << ui->keySequenceEdit->keySequence();
     if (msg->message == WM_HOTKEY){
         qDebug() << "Hotkey was pressed";
-        if (msg->wParam == 100){ // Hotkey ID for F9
+        if (msg->wParam == 101){
             if (!autoClickerRunning) {
                 on_pushButton_clicked();
             } else {
