@@ -6,6 +6,8 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QtConcurrent/QtConcurrent>
+
 
 int main(int argc, char *argv[])
 {
@@ -30,15 +32,21 @@ int main(int argc, char *argv[])
     }
 
 
-
     /*
     WINDOW OBJECT + WINDOW SPECS
     */
     MainWindow w;
     w.setWindowTitle("MacroPilot");
     w.setFixedSize(485, 330);  // Width height, pixels
+    w.setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
     w.show();  // Show window
+
+
+    // QtConcurrent::run([&w]() {
+    //     w.testHotkey(w.getUi()->keySequenceEdit->keySequence(), &w);
+    // });
 
 
     return a.exec();  // Execute application event loop
 }
+

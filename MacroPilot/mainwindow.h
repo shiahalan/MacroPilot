@@ -1,7 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+
 #include <QMainWindow>
+
+#include "ui_mainwindow.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,6 +21,15 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    static void testHotkey(const QKeySequence &sequence, MainWindow *mainWindow);
+
+    Ui::MainWindow *getUi() const;
+
+
+protected:
+    bool nativeEvent(const QByteArray &eventType, void *message, qintptr *result) override;
+
+
 private slots:
     void on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySequence);
 
@@ -27,6 +40,9 @@ private slots:
     void on_pushButton_2_clicked();
 
     bool eventFilter(QObject *obj, QEvent *event);
+
+    bool registerHotKey(int id, int modifiers, int key);
+
 
 private:
     Ui::MainWindow *ui;
