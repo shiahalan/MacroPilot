@@ -162,6 +162,7 @@ void MainWindow::on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySe
 void MainWindow::on_keySequenceEdit_editingFinished()
 {
     qDebug() << "Hotkey change successful!";
+    ui->keySequenceEdit->clearFocus();  // Unselect the keySequenceEdit so user doesn't accidentally change it after hotkey recorded
 }
 
 

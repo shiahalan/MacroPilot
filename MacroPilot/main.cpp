@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     APPLICATION OBJECT + APPLICATION SPECS
     */
     QApplication a(argc, argv);
-    QIcon icon(":/example");
+    QIcon icon(":/img/img/favicon.ico");
     a.setWindowIcon(icon);
 
     /*
