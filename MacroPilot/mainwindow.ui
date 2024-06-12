@@ -56,6 +56,21 @@
              <height>31</height>
             </rect>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::StrongFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::RightToLeft</enum>
+           </property>
+           <property name="tabChangesFocus">
+            <bool>false</bool>
+           </property>
+           <property name="overwriteMode">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>0</string>
+           </property>
           </widget>
           <widget class="QPlainTextEdit" name="plainTextEdit_2">
            <property name="geometry">

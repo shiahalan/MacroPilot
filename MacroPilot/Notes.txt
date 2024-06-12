@@ -1,0 +1,11 @@
+Convert .ico file to Windows .ico file:
+
+Program Files has Image Magick App
+
+Use command 'magick.exe convert icon-16.png icon-32.png icon-256.png icon.ico'
+
+Path to icon-16.png and path to icon-32.png and path to icon.ico file
+
+Will convert icon.ico file to usable Windows .ico file
+https://doc.qt.io/qt-6/appicon.html#:~:text=The%20application%20icon%2C%20typically%20displayed,QWindow%3A%3AsetIcon()%20method.
+===================================================================================
