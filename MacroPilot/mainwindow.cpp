@@ -218,7 +218,18 @@ void MainWindow::on_pushButton_clicked()
         autoClickerRunning = true;
 
         autoClickerRun();  // Run once before starting timer since timer will wait before first click
-        mainTimer->setInterval(1000);
+
+        if (ui->spinBox_2->value() == 0 &&
+            ui->spinBox_3->value() == 0 &&
+            ui->spinBox_4->value() == 0 &&
+            ui->spinBox_5->value() == 0)  {
+            mainTimer->setInterval(1);
+        } else {
+            unsigned long long int interval = (ui->spinBox_2->value() * 60 * 60 * 1000) + (ui->spinBox_3->value() * 60 * 1000) + (ui->spinBox_4->value() * 1000) + (ui->spinBox_5->value());
+            qDebug() << "Interval set to: " << std::to_string(interval) << "milliseconds!";
+            mainTimer->setInterval(interval);
+        }
+
         mainTimer->start();
 
     } else {
