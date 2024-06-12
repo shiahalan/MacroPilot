@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     WINDOW OBJECT + WINDOW SPECS
     */
     MainWindow w;
-    w.setWindowTitle("MacroPilot");
+    w.setWindowTitle("MacroPilot Suite");
     w.setFixedSize(485, 330);  // Width height, pixels
     w.setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint);
     w.show();  // Show window
