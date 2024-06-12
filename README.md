@@ -1,4 +1,4 @@
-# MacroPilot
+# MacroPilot Suite
 ## MacroPilot: Piloting Tasks with Automated Macros
 <br>
 
