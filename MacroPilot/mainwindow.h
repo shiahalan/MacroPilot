@@ -20,6 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QTimer *mainTimer;
 
 
 protected:
@@ -38,6 +39,8 @@ private slots:
     bool registerHotKey(int id, int modifiers, int key);
 
     bool unregisterHotKey(int id);
+
+    void autoClickerRun();
 
 
 private:

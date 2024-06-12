@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     // RegisterHotKey((HWND)MainWindow::winId(), 101, 0, VK_F9);
     registerHotKey(101, 0, VK_F9);
 
+    mainTimer = new QTimer;  // Timer for autoclicker intervals
+    connect(mainTimer, SIGNAL(timeout()), this, SLOT(autoClickerRun()));  // Each timeout call autoClickerRun() function
+
 }
 
 MainWindow::~MainWindow()
@@ -169,15 +172,35 @@ void MainWindow::on_keySequenceEdit_editingFinished()
 /*
 AUTOCLICKER RUN
 */
-void autoClickerRun() {
-    int interval = 1;  // Autoclicker speed interval between clicks
-    autoClickerRunning = true;
-
-    while (autoClickerRunning) {
+void MainWindow::autoClickerRun() {
+    if (ui->comboBox->currentText() == "Left") {
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-        Sleep(interval);
+
+        if (ui->comboBox_2->currentText() == "Double") {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        }
+    } else if (ui->comboBox->currentText() == "Right") {
+        mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+        mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+
+        if (ui->comboBox_2->currentText() == "Double") {
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+        }
     }
+
+    int numClicks;
+
+    if (ui->radioButton_2->isChecked()) numClicks = ui->spinBox->value();
+    else numClicks = -1;
+
+    if (numClicks != -1)  {
+        numClicks--;
+        ui->spinBox->setValue(numClicks);
+    }
+    if (numClicks == 0) on_pushButton_2_clicked();
 }
 
 
@@ -192,8 +215,12 @@ void MainWindow::on_pushButton_clicked()
 
     if (!autoClickerRunning) {
         qDebug() << "Autoclicker running";
-        QThread *thread = QThread::create(autoClickerRun);
-        thread->start();
+        autoClickerRunning = true;
+
+        autoClickerRun();  // Run once before starting timer since timer will wait before first click
+        mainTimer->setInterval(1000);
+        mainTimer->start();
+
     } else {
         qDebug() << "Autoclicker already running";
     }
@@ -206,6 +233,7 @@ void MainWindow::on_pushButton_2_clicked()
     ui->pushButton->setChecked(false);
     ui->pushButton_2->setChecked(true);
     autoClickerRunning = false;
+    mainTimer->stop();
 }
 
 
