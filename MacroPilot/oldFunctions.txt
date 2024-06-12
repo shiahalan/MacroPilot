@@ -1,0 +1,74 @@
+=== OLD FUNCTIONALITY USING MESSAGE BOX AND 3 SECOND TIMER BEFORE STARt ===
+bool autoClickerAntiSpamStart = false;  // Anti message box spam
+bool autoClickerAntiSpamStop = true;
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    qDebug() << "Start autoclicker button pressed";
+    ui->pushButton->setChecked(true);
+    ui->pushButton_2->setChecked(false);
+    autoClickerAntiSpamStop = false;
+
+    if (!autoClickerRunning) {
+        qDebug() << "Autoclicker running";
+
+        if (!autoClickerAntiSpamStart) {
+            autoClickerAntiSpamStart = true;
+
+            if (messageBox) {
+                messageBox->close();
+                delete messageBox;
+            }
+
+            messageBox = new QMessageBox(this);
+            messageBox->setWindowTitle(tr("Auto Clicker Running"));
+            messageBox->setText(tr("After clicking OK, the autoclicker will begin running in 3 seconds!"));
+            messageBox->exec();
+            QThread *thread = QThread::create(autoClickerRun);
+            thread->start();
+        }
+        QThread *thread = QThread::create(autoClickerRun);
+        thread->start();
+    } else {
+        qDebug() << "Autoclicker already running";
+    }
+
+}
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    qDebug() << "Stop autoclicker button pressed";
+    ui->pushButton->setChecked(false);
+    ui->pushButton_2->setChecked(true);
+    autoClickerRunning = false;
+    autoClickerAntiSpamStart = false;
+
+    if (!autoClickerAntiSpamStop) {
+        autoClickerAntiSpamStop = true;
+
+        if (messageBox) {
+            messageBox->close();
+            delete messageBox;
+        }
+
+        messageBox = new QMessageBox(this);
+        messageBox->setWindowTitle(tr("Auto Clicker Stopped"));
+        messageBox->setText(tr("The autoclicker process has been stopped!"));
+        messageBox->exec();
+    }
+}
+
+
+void autoClickerRun() {
+    int interval = 1;  // Autoclicker speed interval between clicks
+    autoClickerRunning = true;
+
+    Sleep(3000);  // Wait before starting for 3 seconds
+    while (autoClickerRunning) {
+        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        Sleep(interval);
+    }
+}

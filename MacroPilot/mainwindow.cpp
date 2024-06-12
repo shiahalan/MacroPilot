@@ -9,10 +9,8 @@
 #include <QApplication>
 
 
-bool autoClickerRunning = false;
-bool autoClickerAntiSpamStart = false;
-bool autoClickerAntiSpamStop = true;
-int hotKeyId = 101;
+bool autoClickerRunning = false;  // Enable or disable autoclicker while loop
+int hotKeyId = 101;  // Arbitrary hotKeyId for registering hotKeys
 QMessageBox *messageBox = nullptr;  // Global message box
 
 MainWindow::MainWindow(QWidget *parent)
@@ -21,14 +19,13 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QKeySequence defaultKeySequence("F9");
+    QKeySequence defaultKeySequence("F9");  // Setup default hotkey as F9
     ui->keySequenceEdit->setKeySequence(defaultKeySequence);
 
     // RegisterHotKey((HWND)MainWindow::winId(), 101, 0, VK_F9);
     registerHotKey(101, 0, VK_F9);
 
 }
-
 
 MainWindow::~MainWindow()
 {
@@ -49,8 +46,8 @@ void MainWindow::on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySe
     qDebug() << "Hotkey being changed to: " << keySequence;
     unregisterHotKey(hotKeyId);
 
-    int keyCode = keySequence[0];
-    int modifiers = 0;
+    int keyCode = keySequence[0];  // When single character, first index is character
+    int modifiers = 0;  // Modifier for registering hotkeys: ctrl alt etc.
 
     if (!keySequence.isEmpty()) {
 
@@ -110,7 +107,7 @@ void MainWindow::on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySe
                 modifiers |= MOD_WIN;
         }
 
-        // Check for special cases
+        // Check for special cases like F1-F12
         switch(keyCode) {
 
         case Qt::Key_F1:
@@ -165,7 +162,6 @@ void MainWindow::on_keySequenceEdit_keySequenceChanged(const QKeySequence &keySe
 void MainWindow::on_keySequenceEdit_editingFinished()
 {
     qDebug() << "Hotkey change successful!";
-
 }
 
 
@@ -173,10 +169,9 @@ void MainWindow::on_keySequenceEdit_editingFinished()
 AUTOCLICKER RUN
 */
 void autoClickerRun() {
-    int interval = 100;
+    int interval = 1;  // Autoclicker speed interval between clicks
     autoClickerRunning = true;
 
-    Sleep(3000);  // Wait before starting for 3 seconds
     while (autoClickerRunning) {
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
@@ -193,26 +188,11 @@ void MainWindow::on_pushButton_clicked()
     qDebug() << "Start autoclicker button pressed";
     ui->pushButton->setChecked(true);
     ui->pushButton_2->setChecked(false);
-    autoClickerAntiSpamStop = false;
 
     if (!autoClickerRunning) {
         qDebug() << "Autoclicker running";
-
-        if (!autoClickerAntiSpamStart) {
-            autoClickerAntiSpamStart = true;
-
-            if (messageBox) {
-                messageBox->close();
-                delete messageBox;
-            }
-
-            messageBox = new QMessageBox(this);
-            messageBox->setWindowTitle(tr("Auto Clicker Running"));
-            messageBox->setText(tr("After clicking OK, the autoclicker will begin running in 3 seconds!"));
-            messageBox->exec();
-            QThread *thread = QThread::create(autoClickerRun);
-            thread->start();
-        }
+        QThread *thread = QThread::create(autoClickerRun);
+        thread->start();
     } else {
         qDebug() << "Autoclicker already running";
     }
@@ -225,21 +205,6 @@ void MainWindow::on_pushButton_2_clicked()
     ui->pushButton->setChecked(false);
     ui->pushButton_2->setChecked(true);
     autoClickerRunning = false;
-    autoClickerAntiSpamStart = false;
-
-    if (!autoClickerAntiSpamStop) {
-        autoClickerAntiSpamStop = true;
-
-        if (messageBox) {
-            messageBox->close();
-            delete messageBox;
-        }
-
-        messageBox = new QMessageBox(this);
-        messageBox->setWindowTitle(tr("Auto Clicker Stopped"));
-        messageBox->setText(tr("The autoclicker process has been stopped!"));
-        messageBox->exec();
-    }
 }
 
 
@@ -247,7 +212,7 @@ void MainWindow::on_pushButton_2_clicked()
 AUTOCLICKER HOTKEY START AND STOP
 */
 
-bool MainWindow::registerHotKey(int id, int modifiers, int key) {
+bool MainWindow::registerHotKey(int id, int modifiers, int key) {  // Register new hotkeys
     if (!RegisterHotKey((HWND)MainWindow::winId(), id, modifiers, key)) {
         qDebug() << "Failed to register hotkey with ID:" << id;
         return false;
@@ -256,7 +221,7 @@ bool MainWindow::registerHotKey(int id, int modifiers, int key) {
     return true;
 }
 
-bool MainWindow::unregisterHotKey(int id) {
+bool MainWindow::unregisterHotKey(int id) {  // Unregister previous hotkey
     if (!UnregisterHotKey((HWND)MainWindow::winId(), id)) {
         qDebug() << "Failed to unregister hotkey with ID:" << id;
         return false;
@@ -265,9 +230,7 @@ bool MainWindow::unregisterHotKey(int id) {
     return true;
 }
 
-
-
-bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr *result){
+bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr *result){  // Detection of native windows Events like key pressing
     Q_UNUSED(eventType);
     Q_UNUSED(result);
 
@@ -286,7 +249,7 @@ bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, qintptr
         }
     }
 
-    return false;
+    return false;  // Not handled
 }
 
 /*

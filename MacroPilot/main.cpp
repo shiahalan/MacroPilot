@@ -13,10 +13,11 @@ int main(int argc, char *argv[])
 {
     qDebug() << "STARTING APPLICATION!";
     /*
-    APPLICATION OBJECT
+    APPLICATION OBJECT + APPLICATION SPECS
     */
     QApplication a(argc, argv);
-
+    QIcon icon(":/example");
+    a.setWindowIcon(icon);
 
     /*
     TRANSLATION
@@ -30,7 +31,6 @@ int main(int argc, char *argv[])
             break;
         }
     }
-
 
     /*
     WINDOW OBJECT + WINDOW SPECS
