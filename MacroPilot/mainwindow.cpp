@@ -225,7 +225,7 @@ void MainWindow::on_pushButton_clicked()
             ui->spinBox_5->value() == 0)  {
             mainTimer->setInterval(1);
         } else {
-            unsigned long long int interval = (ui->spinBox_2->value() * 60 * 60 * 1000) + (ui->spinBox_3->value() * 60 * 1000) + (ui->spinBox_4->value() * 1000) + (ui->spinBox_5->value());
+            unsigned long long int interval = (ui->spinBox_2->value() * 60ULL * 60ULL * 1000ULL) + (ui->spinBox_3->value() * 60ULL * 1000ULL) + (ui->spinBox_4->value() * 1000ULL) + (ui->spinBox_5->value());
             qDebug() << "Interval set to: " << std::to_string(interval) << "milliseconds!";
             mainTimer->setInterval(interval);
         }
