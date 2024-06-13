@@ -1,4 +1,5 @@
 # MacroPilot: Piloting Tasks with Automated Macros
+![image](https://github.com/shiahalan/MacroPilot/assets/102575877/f6186acd-57ba-493c-8a33-e12e07f1e05c)
 
 ### Description
 -----
