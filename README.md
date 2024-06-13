@@ -1,6 +1,7 @@
 # MacroPilot: Piloting Tasks with Automated Macros
 ![Release](https://img.shields.io/github/v/release/shiahalan/MacroPilot
-) ![Downloads GitHub](https://img.shields.io/github/downloads/shiahalan/MacroPilot/total)
+) ![Downloads GitHub](https://img.shields.io/github/downloads/shiahalan/MacroPilot/total) ![License](https://img.shields.io/github/license/shiahalan/MacroPilot
+)
 
 <p align="center">
   <img width="300" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/69e16844-9785-4efe-9265-44e2bdae06bc">
