@@ -3,14 +3,15 @@
 <p align="center">
   <img width="300" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/69e16844-9785-4efe-9265-44e2bdae06bc">
 </p>
-
-### Description
------
-MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
-[![Download MacroPilot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/macropilot/files/latest/download)
 <p align="left">
   <img width="125" height="125" src="https://github.com/shiahalan/MacroPilot/assets/102575877/5235a4f9-1e1c-40bd-a359-d98cc811b697">
 </p>
+### Description
+-----
+MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
+<br>
+[![Download MacroPilot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/macropilot/files/latest/download)
+
 <br>
 
 ### Features:
