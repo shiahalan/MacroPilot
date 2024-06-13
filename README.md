@@ -8,6 +8,7 @@
 -----
 MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
 
+<br><br>
 ### Features:
 -----
 - #### Auto Clicker:
@@ -17,6 +18,7 @@ MacroPilot is an open-source software solution designed to streamline task manag
   - **Single or Double Clicks**: Execute single clicks or double clicks.
   - **Customizable Hotkey**: Customize a hotkey to trigger the auto-clicking function (default F9).
 
+<br><br>
 ### Planned Features:
 -----
 - #### Auto Keyboard Clicker:
