@@ -1,7 +1,7 @@
 # MacroPilot: Piloting Tasks with Automated Macros
 
 <p align="center">
-  <img width="460" height="300" src="https://picsum.photos/460/300">
+  <img width="460" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/69e16844-9785-4efe-9265-44e2bdae06bc">
 </p>
 
 ### Description
