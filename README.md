@@ -40,7 +40,7 @@ MacroPilot is an open-source software solution designed to streamline task manag
 ### User Instruction Manual:
 
 <p align="center">
-  <img width="450" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/850215c6-fa24-4950-9f75-8277068b2578">
+  <img width="400" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/850215c6-fa24-4950-9f75-8277068b2578">
 </p>
 
 <br>
