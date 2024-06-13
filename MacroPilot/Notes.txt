@@ -9,3 +9,84 @@ Path to icon-16.png and path to icon-32.png and path to icon.ico file
 Will convert icon.ico file to usable Windows .ico file
 https://doc.qt.io/qt-6/appicon.html#:~:text=The%20application%20icon%2C%20typically%20displayed,QWindow%3A%3AsetIcon()%20method.
 ===================================================================================
+
+WHEN BUILDING FOR RELEASE, CHANGE KIT TO MinGW 64-bit AND Release, then BUILD!! Use windeployqt.exe
+
+AFTER DONE BUILDING, CHANGE KIT TO llvm-mingw 64-bit AND Debug
+
+===================================================================================
+Static Linking vs Dynamic Linking, setup using dynamic linking currently
+For the installer of the app, use Inno Setup
+https://jrsoftware.org/isdl.php
+
+SETUP!!
+
+Uncheck Create a new empty Script File
+
+Next->
+
+Application Information:
+Name: MacroPilot Suite
+Application Version: ???
+Application Publisher: Alan Shiah
+Application Website: https://alanshiah.com
+
+Next->
+
+Application Folder Name: MacroPilot Suite
+
+Next->
+
+Application main executable file: Click on MacroPilot.exe in build
+Other Application Files: Click on the entire build release folder with the MacroPilot.exe included, include all sub folders check
+
+
+Next->
+
+Application File Type Name: MacroPilot Suite File
+Application File Type Extension: .myp
+
+Next->
+
+Next->
+
+License File: Add license.txt
+
+Next->
+
+Install Mode: Non administrative install mode, click this
+
+Next->
+
+Next->
+
+Languages: Select Install
+
+Next->
+
+Custom compiler output folder: Put it in installers folder in the project
+Compiler output base file name: MacroPilot Suite Installer
+Custom Setup icon file: Select icon file in img in project
+
+Next->
+Next->
+Finish
+
+You can save the script as whatever, probably do: Script installer [version]
+====================================================================================
+Traditionally, first FULL release of app is v1.0.0
+
+Major.Minor.Patch, increment by one for any
+
+Example, bug: v1.0.1
+Example, new button: v1.1.1
+Example, new keyboard clicker: v2.1.1
+
+alpha - Used for testing major functionalities of software
+beta - Used for finding bugs in the software
+
+
+VERSIONS IN ORDER (OLDEST TO LATEST):
+v1.0.0-alpha
+v1.0.0-beta
+
