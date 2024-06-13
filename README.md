@@ -8,14 +8,11 @@
 -----
 MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
 [Download Here](https://sourceforge.net/projects/macropilot/)!
+<p align="center">
+  <img width="300" height="300" src="https://sourceforge.net/projects/macropilot/">
+</p>
 <br>
-<!-- Begin SF Tag -->
-<div class="sf-root" data-id="3768201" data-badge="oss-users-love-us-black" style="width:125px">
-    <a href="https://sourceforge.net/projects/macropilot/" target="_blank">MacroPilot</a>
-</div>
-<script>(function () {var sc=document.createElement('script');sc.async=true;sc.src='https://b.sf-syn.com/badge_js?sf_id=3768201';var p=document.getElementsByTagName('script')[0];p.parentNode.insertBefore(sc, p);})();
-</script>
-<!-- End SF Tag -->
+
 ### Features:
 -----
 - #### Auto Clicker:
