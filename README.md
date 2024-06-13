@@ -1,6 +1,7 @@
 # MacroPilot: Piloting Tasks with Automated Macros
-![image](https://github.com/shiahalan/MacroPilot/assets/102575877/f6186acd-57ba-493c-8a33-e12e07f1e05c)
-
+<p align="center">
+  <img src="[image](https://github.com/shiahalan/MacroPilot/assets/102575877/f6186acd-57ba-493c-8a33-e12e07f1e05c)" />
+</p>
 ### Description
 -----
 MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
