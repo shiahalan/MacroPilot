@@ -1,7 +1,7 @@
 # MacroPilot: Piloting Tasks with Automated Macros
 ![Release](https://img.shields.io/github/v/release/shiahalan/MacroPilot
-) GitHub: ![Downloads GitHub](https://img.shields.io/github/downloads/shiahalan/MacroPilot/total)
- Source Forge: [![Download MacroPilot](https://img.shields.io/sourceforge/dt/macropilot.svg)](https://sourceforge.net/projects/macropilot/files/latest/download)
+) ![Downloads GitHub](https://img.shields.io/github/downloads/shiahalan/MacroPilot/total)
+
 <p align="center">
   <img width="300" height="300" src="https://github.com/shiahalan/MacroPilot/assets/102575877/69e16844-9785-4efe-9265-44e2bdae06bc">
 </p>
@@ -15,7 +15,8 @@ MacroPilot is an open-source software solution designed to streamline task manag
 <br><br>
 [![Download MacroPilot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/macropilot/files/latest/download)
 <br>
-
+ **Source Forge Downloads**: [![Download MacroPilot](https://img.shields.io/sourceforge/dt/macropilot.svg)](https://sourceforge.net/projects/macropilot/files/latest/download)
+ <br>
 
 ### Features:
 -----
