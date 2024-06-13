@@ -17,6 +17,7 @@ MacroPilot is an open-source software solution designed to streamline task manag
 <br>
  **Source Forge Downloads**: [![Download MacroPilot](https://img.shields.io/sourceforge/dt/macropilot.svg)](https://sourceforge.net/projects/macropilot/files/latest/download)
  <br>
+<br>
 
 ### Features:
 -----
