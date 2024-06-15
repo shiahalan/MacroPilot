@@ -538,15 +538,15 @@
             <rect>
              <x>240</x>
              <y>80</y>
-             <width>101</width>
+             <width>111</width>
              <height>20</height>
             </rect>
            </property>
            <property name="text">
-            <string>Random Clicks</string>
+            <string>Randomize Clicks</string>
            </property>
            <property name="autoExclusive">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
           <widget class="QCheckBox" name="checkBox_2">
@@ -562,7 +562,7 @@
             <string>Hold Click</string>
            </property>
            <property name="autoExclusive">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </widget>

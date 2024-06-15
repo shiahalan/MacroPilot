@@ -173,6 +173,16 @@ void MainWindow::on_keySequenceEdit_editingFinished()
 AUTOCLICKER RUN
 */
 void MainWindow::autoClickerRun() {
+    if (ui->checkBox_2->isChecked()) {
+        if (ui->comboBox->currentText() == "Left") {
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+        } else if (ui->comboBox->currentText() == "Right") {
+            mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+        }
+
+        return;
+    }
+
     if (ui->comboBox->currentText() == "Left") {
         mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
         mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
@@ -207,6 +217,14 @@ void MainWindow::autoClickerRun() {
 /*
 AUTOCLICKER START AND STOP BUTTONS
 */
+bool isLeftMouseButtonDown() {
+    return GetAsyncKeyState(VK_LBUTTON) & 0x8000;
+}
+
+bool isRightMouseButtonDown() {
+    return GetAsyncKeyState(VK_RBUTTON) & 0x8000;
+}
+
 void MainWindow::on_pushButton_clicked()
 {
     qDebug() << "Start autoclicker button pressed";
@@ -249,6 +267,8 @@ void MainWindow::on_pushButton_2_clicked()
     ui->pushButton->setChecked(false);
     ui->pushButton_2->setChecked(true);
     autoClickerRunning = false;
+    if (isLeftMouseButtonDown()) mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+    if (isRightMouseButtonDown()) mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
     mainTimer->stop();
 }
 
