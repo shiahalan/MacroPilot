@@ -380,6 +380,11 @@
            </item>
            <item>
             <property name="text">
+             <string>Middle</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>Right</string>
             </property>
            </item>
@@ -538,7 +543,7 @@
             <rect>
              <x>240</x>
              <y>80</y>
-             <width>111</width>
+             <width>121</width>
              <height>20</height>
             </rect>
            </property>

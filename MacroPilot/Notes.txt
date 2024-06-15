@@ -60,7 +60,7 @@ Next->
 
 Next->
 
-Languages: Select Install
+Languages: Select All
 
 Next->
 
@@ -82,11 +82,11 @@ Example, bug: v1.0.1
 Example, new button: v1.1.1
 Example, new keyboard clicker: v2.1.1
 
-alpha - Used for testing major functionalities of software
-beta - Used for finding bugs in the software
+alpha - Used for testing major functionalities of software. Incomplete software
+beta - Used for finding bugs in the software after software is complete. Refine...
 
 
 VERSIONS IN ORDER (OLDEST TO LATEST):
 v1.0.0-alpha
-v1.0.0-beta
+v1.1.0-alpha
 

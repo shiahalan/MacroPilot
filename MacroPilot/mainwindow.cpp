@@ -241,7 +241,7 @@ void MainWindow::on_pushButton_clicked()
             ui->spinBox_3->value() == 0 &&
             ui->spinBox_4->value() == 0 &&
             ui->spinBox_5->value() == 0)  {
-            mainTimer->setInterval(1);
+            mainTimer->setInterval(3);  // Default fastest interval if all values are 0... If it's too fast, then some computers may crash!!!
         } else {
             std::uint64_t hours = ui->spinBox_2->value() * 60ULL * 60ULL * 1000ULL;
             std::uint64_t minutes = ui->spinBox_3->value() * 60ULL * 1000ULL;
