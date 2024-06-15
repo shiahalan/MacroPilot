@@ -27,6 +27,7 @@ MacroPilot is an open-source software solution designed to streamline task manag
   - **Left and Right Clicks**: Perform both left or right clicks.
   - **Single or Double Clicks**: Execute single clicks or double clicks.
   - **Customizable Hotkey**: Customize a hotkey to trigger the auto-clicking function (default F9).
+  - **Hold Down Mouse Button**: Instead of clicking, holds down left or right mouse button.
 
 <br>
 
