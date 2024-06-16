@@ -173,7 +173,9 @@ void MainWindow::on_keySequenceEdit_editingFinished()
 AUTOCLICKER RUN
 */
 void MainWindow::autoClickerRun() {
-    if (ui->checkBox_2->isChecked()) {
+    int numClicks;
+
+    if (ui->checkBox_2->isChecked()) {  // Hold click button is checked
         if (ui->comboBox->currentText() == "Left") {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
         } else if (ui->comboBox->currentText() == "Right") {
@@ -183,33 +185,64 @@ void MainWindow::autoClickerRun() {
         return;
     }
 
-    if (ui->comboBox->currentText() == "Left") {
-        mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-        mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+    if (ui->checkBox->isChecked()) {  // Randomize click is checked
+        if (rand() <= RAND_MAX * 0.65) {  // click 65% of the time
+            if (ui->comboBox->currentText() == "Left") {
+                mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
-        if (ui->comboBox_2->currentText() == "Double") {
+                if (ui->comboBox_2->currentText() == "Double") {
+                    mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                    mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+                }
+            } else if (ui->comboBox->currentText() == "Right") {
+                mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+
+                if (ui->comboBox_2->currentText() == "Double") {
+                    mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                    mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+                }
+            }
+
+            if (ui->radioButton_2->isChecked()) numClicks = ui->spinBox->value();  // Decrement loop value if click
+            else numClicks = -1;
+
+            if (numClicks != -1)  {
+                numClicks--;
+                ui->spinBox->setValue(numClicks);
+            }
+        }
+
+    } else {
+        if (ui->comboBox->currentText() == "Left") {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-        }
-    } else if (ui->comboBox->currentText() == "Right") {
-        mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
-        mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 
-        if (ui->comboBox_2->currentText() == "Double") {
+            if (ui->comboBox_2->currentText() == "Double") {
+                mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            }
+        } else if (ui->comboBox->currentText() == "Right") {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+
+            if (ui->comboBox_2->currentText() == "Double") {
+                mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+            }
+        }
+
+
+        if (ui->radioButton_2->isChecked()) numClicks = ui->spinBox->value();  // Decrement loop value
+        else numClicks = -1;
+
+        if (numClicks != -1)  {
+            numClicks--;
+            ui->spinBox->setValue(numClicks);
         }
     }
 
-    int numClicks;
-
-    if (ui->radioButton_2->isChecked()) numClicks = ui->spinBox->value();
-    else numClicks = -1;
-
-    if (numClicks != -1)  {
-        numClicks--;
-        ui->spinBox->setValue(numClicks);
-    }
     if (numClicks == 0) on_pushButton_2_clicked();
 }
 
