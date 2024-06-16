@@ -11,8 +11,8 @@
 
 ### Description
 -----
-Auto clicker, Keyboard clicker, input recorder, and key binder!
-<br>
+Auto Clicker, Auto Keyboard Clicker, Macro Automation Player, and Keybinds!
+<br><br>
 MacroPilot is an open-source software solution designed to streamline task management and enhance productivity through automated macros. With MacroPilot, users can automate repetitive tasks, freeing up valuable time.
 <br><br>
 [![Download MacroPilot](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/macropilot/files/latest/download)
