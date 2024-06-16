@@ -180,6 +180,8 @@ void MainWindow::autoClickerRun() {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
         } else if (ui->comboBox->currentText() == "Right") {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+        } else if (ui->comboBox->currentText() == "Middle") {
+            mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0);
         }
 
         return;  // Stop program from going to other scenarios
@@ -206,6 +208,16 @@ void MainWindow::autoClickerRun() {
                     mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
                     QThread::msleep(1);
                     mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+                }
+            } else if (ui->comboBox->currentText() == "Middle") {
+                mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);
+                mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
+
+                if (ui->comboBox_2->currentText() == "Double") {
+                    mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0);
+                    QThread::msleep(1);
+                    mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
                 }
             }
 
@@ -239,6 +251,16 @@ void MainWindow::autoClickerRun() {
                 QThread::msleep(1);
                 mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
             }
+        } else if (ui->comboBox->currentText() == "Middle") {
+            mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0);
+            QThread::msleep(1);
+            mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
+
+            if (ui->comboBox_2->currentText() == "Double") {
+                mouse_event(MOUSEEVENTF_MIDDLEDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);
+                mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
+            }
         }
 
 
@@ -265,6 +287,11 @@ bool isLeftMouseButtonDown() {
 bool isRightMouseButtonDown() {
     return GetAsyncKeyState(VK_RBUTTON) & 0x8000;
 }
+
+bool isMiddleMouseButtonDown() {
+    return GetAsyncKeyState(VK_MBUTTON) & 0x8000;
+}
+
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -308,9 +335,10 @@ void MainWindow::on_pushButton_2_clicked()
     ui->pushButton->setChecked(false);
     ui->pushButton_2->setChecked(true);
     autoClickerRunning = false;
+    mainTimer->stop();
     if (isLeftMouseButtonDown()) mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
     if (isRightMouseButtonDown()) mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
-    mainTimer->stop();
+    if (isMiddleMouseButtonDown()) mouse_event(MOUSEEVENTF_MIDDLEUP, 0, 0, 0, 0);
 }
 
 

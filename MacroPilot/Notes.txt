@@ -92,5 +92,5 @@ VERSIONS IN ORDER (OLDEST TO LATEST):
 v1.0.0-alpha  Autoclicker
 v1.1.0-alpha  Hold button
 v1.2.0-alpha  Randomize clicks
-v1.2.1-alpha  Fixed allowing 1ms as a valid interval
+v1.2.1-alpha  Added middle click. Fixed allowing 1ms as a valid interval, now min 3ms. Added delay between releasing a click to help applications register click.
 
