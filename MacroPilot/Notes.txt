@@ -12,7 +12,9 @@ https://doc.qt.io/qt-6/appicon.html#:~:text=The%20application%20icon%2C%20typica
 
 WHEN BUILDING FOR RELEASE, CHANGE KIT TO MinGW 64-bit AND Release, then BUILD!! Use windeployqt.exe
 
-AFTER DONE BUILDING, CHANGE KIT TO llvm-mingw 64-bit AND Debug
+AFTER DONE BUILDING, CHANGE KIT TO Mingw 64-bit AND Debug
+
+llvm-mingw 64bit has glitched libraries and glitched compile... Things that compile and run perfectly in MinGW, don't work in llvm (has bugs)
 
 ===================================================================================
 Static Linking vs Dynamic Linking, setup using dynamic linking currently
@@ -90,5 +92,5 @@ VERSIONS IN ORDER (OLDEST TO LATEST):
 v1.0.0-alpha  Autoclicker
 v1.1.0-alpha  Hold button
 v1.2.0-alpha  Randomize clicks
-v1.2.1-alpha  Fixed allowing 0ms as a valid interval,
+v1.2.1-alpha  Fixed allowing 1ms as a valid interval
 
