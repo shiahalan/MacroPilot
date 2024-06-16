@@ -7,7 +7,7 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QApplication>
-
+#include <QRandomGenerator>
 
 bool autoClickerRunning = false;  // Enable or disable autoclicker while loop
 int hotKeyId = 101;  // Arbitrary hotKeyId for registering hotKeys
@@ -182,25 +182,29 @@ void MainWindow::autoClickerRun() {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
         }
 
-        return;
+        return;  // Stop program from going to other scenarios
     }
 
-    if (ui->checkBox->isChecked()) {  // Randomize click is checked
-        if (rand() <= RAND_MAX * 0.65) {  // click 65% of the time
+    if (ui->checkBox->isChecked()) {  // Randomize click is checked!!!
+        if (QRandomGenerator::global()->generate() % 100 < 65) {  // click 65% of the time ||| Change this to be a calculation that waits up to 25% of the interval time
             if (ui->comboBox->currentText() == "Left") {
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);  // Sleep in thread for 1 ms so applications can register click. Sometimes if click down and click up too fast, application won't register it
                 mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
                 if (ui->comboBox_2->currentText() == "Double") {
                     mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                    QThread::msleep(1);
                     mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
                 }
             } else if (ui->comboBox->currentText() == "Right") {
                 mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);
                 mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 
                 if (ui->comboBox_2->currentText() == "Double") {
                     mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                    QThread::msleep(1);
                     mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
                 }
             }
@@ -217,18 +221,22 @@ void MainWindow::autoClickerRun() {
     } else {
         if (ui->comboBox->currentText() == "Left") {
             mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            QThread::msleep(1);
             mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
 
             if (ui->comboBox_2->currentText() == "Double") {
                 mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);
                 mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
             }
         } else if (ui->comboBox->currentText() == "Right") {
             mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+            QThread::msleep(1);
             mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
 
             if (ui->comboBox_2->currentText() == "Double") {
                 mouse_event(MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+                QThread::msleep(1);
                 mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
             }
         }
@@ -273,8 +281,8 @@ void MainWindow::on_pushButton_clicked()
         if (ui->spinBox_2->value() == 0 &&
             ui->spinBox_3->value() == 0 &&
             ui->spinBox_4->value() == 0 &&
-            ui->spinBox_5->value() == 0)  {
-            mainTimer->setInterval(3);  // Default fastest interval if all values are 0... If it's too fast, then some computers may crash!!!
+            ui->spinBox_5->value() <= 3)  {
+            mainTimer->setInterval(3);  // Default fastest interval 3ms if all values are 0... If it's too fast, then some computers may crash!!!
         } else {
             std::uint64_t hours = ui->spinBox_2->value() * 60ULL * 60ULL * 1000ULL;
             std::uint64_t minutes = ui->spinBox_3->value() * 60ULL * 1000ULL;

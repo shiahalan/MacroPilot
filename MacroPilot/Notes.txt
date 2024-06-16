@@ -90,4 +90,5 @@ VERSIONS IN ORDER (OLDEST TO LATEST):
 v1.0.0-alpha  Autoclicker
 v1.1.0-alpha  Hold button
 v1.2.0-alpha  Randomize clicks
+v1.2.1-alpha  Fixed allowing 0ms as a valid interval,
 
