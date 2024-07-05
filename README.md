@@ -8,6 +8,9 @@
 <p align="left">
   <img width="125" height="125" src="https://github.com/shiahalan/MacroPilot/assets/102575877/5235a4f9-1e1c-40bd-a359-d98cc811b697">
 </p>
+<p align="left">
+  <img width="125" height="125" src="https://github.com/shiahalan/MacroPilot/assets/102575877/5235a4f9-1e1c-40bd-a359-d98cc811b697">
+</p>
 
 ### Description
 -----
