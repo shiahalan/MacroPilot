@@ -7,6 +7,7 @@
 </p>
 <p align="left">
   <img width="125" height="125" src="https://github.com/shiahalan/MacroPilot/assets/102575877/5235a4f9-1e1c-40bd-a359-d98cc811b697">
+  <img width="125" height="125" src="https://sourceforge.net/cdn/syndication/badge_img/3768201/oss-rising-star-black?achievement=oss-rising-star&r=https://sourceforge.net/p/macropilot/admin/files-sf/badges/">
 </p>
 
 ### Description
