@@ -581,8 +581,8 @@
            <rect>
             <x>10</x>
             <y>10</y>
-            <width>221</width>
-            <height>241</height>
+            <width>171</width>
+            <height>181</height>
            </rect>
           </property>
           <property name="frameShape">
@@ -596,8 +596,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>221</width>
-             <height>241</height>
+             <width>171</width>
+             <height>181</height>
             </rect>
            </property>
           </widget>
@@ -605,9 +605,9 @@
          <widget class="QLabel" name="label_14">
           <property name="geometry">
            <rect>
-            <x>30</x>
+            <x>20</x>
             <y>0</y>
-            <width>81</width>
+            <width>71</width>
             <height>20</height>
            </rect>
           </property>
@@ -630,7 +630,134 @@
          <widget class="QLabel" name="label_15">
           <property name="geometry">
            <rect>
-            <x>140</x>
+            <x>110</x>
+            <y>0</y>
+            <width>61</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Key</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_5">
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>10</y>
+            <width>261</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QKeySequenceEdit" name="keySequenceEdit_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>12</y>
+             <width>111</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="maximumSequenceLength">
+            <longLong>1</longLong>
+           </property>
+          </widget>
+          <widget class="QKeySequenceEdit" name="keySequenceEdit_3">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>12</y>
+             <width>111</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="maximumSequenceLength">
+            <longLong>1</longLong>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>40</y>
+             <width>91</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Record/Save</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>40</y>
+             <width>51</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Start</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="geometry">
+            <rect>
+             <x>200</x>
+             <y>40</y>
+             <width>51</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Stop</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>220</x>
             <y>0</y>
             <width>71</width>
             <height>20</height>
@@ -646,7 +773,373 @@
            <number>1</number>
           </property>
           <property name="text">
-           <string>Key</string>
+           <string>Record/Save</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_17">
+          <property name="geometry">
+           <rect>
+            <x>350</x>
+            <y>0</y>
+            <width>71</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Start/Stop</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_6">
+          <property name="geometry">
+           <rect>
+            <x>189</x>
+            <y>89</y>
+            <width>261</width>
+            <height>71</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QLabel" name="label_18">
+           <property name="geometry">
+            <rect>
+             <x>220</x>
+             <y>10</y>
+             <width>31</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>times</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_4">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>40</y>
+             <width>101</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Until Stopped</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <property name="autoRepeat">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="radioButton_3">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>0</y>
+             <width>89</width>
+             <height>51</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Loop</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_13">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>81</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Key Loop</string>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="spinBox_6">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>17</y>
+             <width>91</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="wrapping">
+            <bool>false</bool>
+           </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::UpDownArrows</enum>
+           </property>
+           <property name="accelerated">
+            <bool>true</bool>
+           </property>
+           <property name="correctionMode">
+            <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>9999999</number>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="label_12">
+          <property name="geometry">
+           <rect>
+            <x>280</x>
+            <y>80</y>
+            <width>81</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Options</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_7">
+          <property name="geometry">
+           <rect>
+            <x>190</x>
+            <y>170</y>
+            <width>261</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QSpinBox" name="spinBox_7">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>20</y>
+             <width>81</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="correctionMode">
+            <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>9999999</number>
+           </property>
+           <property name="value">
+            <number>0</number>
+           </property>
+          </widget>
+          <widget class="QSpinBox" name="spinBox_8">
+           <property name="geometry">
+            <rect>
+             <x>140</x>
+             <y>20</y>
+             <width>81</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="correctionMode">
+            <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+           </property>
+           <property name="minimum">
+            <number>0</number>
+           </property>
+           <property name="maximum">
+            <number>9999999</number>
+           </property>
+           <property name="value">
+            <number>100</number>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_21">
+           <property name="geometry">
+            <rect>
+             <x>230</x>
+             <y>20</y>
+             <width>31</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>MS</string>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>260</x>
+            <y>160</y>
+            <width>121</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Time Between Presses</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_20">
+          <property name="geometry">
+           <rect>
+            <x>290</x>
+            <y>190</y>
+            <width>31</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Secs</string>
+          </property>
+         </widget>
+         <widget class="QFrame" name="frame_8">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>200</y>
+            <width>171</width>
+            <height>61</height>
+           </rect>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QCheckBox" name="checkBox_3">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>11</y>
+             <width>121</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Randomize Presses</string>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+          </widget>
+          <widget class="QCheckBox" name="checkBox_4">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>33</y>
+             <width>101</width>
+             <height>20</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Hold Keys</string>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="label_22">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>190</y>
+            <width>91</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="lineWidth">
+           <number>1</number>
+          </property>
+          <property name="text">
+           <string>Extra Options</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
